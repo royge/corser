@@ -14,9 +14,10 @@ type CORS struct {
 // Config defines CORS configuration for every environment.
 type Config map[string]CORS
 
-// NewConfig decodes config file and returns Cors pointer.
+// NewConfig decodes config file and returns CORS Config.
 // The function will look for cors.yml file from the current directory. If
-// nothing can found it will try to look into the config directory.
+// nothing can found it will try to look into the config directory for possible
+// cors.yml file.
 func NewConfig() (Config, error) {
 	file, err := os.Open("cors.yml")
 	if err != nil {

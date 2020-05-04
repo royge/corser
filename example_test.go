@@ -8,6 +8,7 @@ import (
 
 // ExampleNewConfig shows an example on how to read configuration from a yaml
 // file.
+//
 // You can check the content of cors.yml file for reference.
 func ExampleNewConfig() {
 	config, err := ezcors.NewConfig()

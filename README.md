@@ -11,7 +11,30 @@ Easy handling of CORS configuration file for Go http handlers.
 go get github.com/royge/ezcors
 ```
 
-Example:
+### Example
+
+The `cors.yml` file.
+
+```yaml
+dev:
+  allowedOrigins:
+    - http://127.0.0.1
+    - http://devhost
+test:
+  allowedOrigins:
+    - http://127.0.0.2
+    - http://testhost
+stage:
+  allowedOrigins:
+    - http://127.0.0.3
+    - http://stagehost
+prod:
+  allowedOrigins:
+    - http://127.0.0.4
+    - http://prodhost
+```
+
+Usage example:
 
 ```go
 import (
