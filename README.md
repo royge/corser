@@ -1,5 +1,7 @@
 # ezcors
 
+[![Build Status](https://travis-ci.org/royge/ezcors.svg?branch=master)](https://travis-ci.org/royge/ezcors)
+
 Easy handling of CORS configuration file for Go http handlers.
 
 ## How To Use
