@@ -1,0 +1,16 @@
+dev:
+  allowedOrigins:
+    - http://127.0.0.1
+    - http://devhost
+test:
+  allowedOrigins:
+    - http://127.0.0.2
+    - http://testhost
+stage:
+  allowedOrigins:
+    - http://127.0.0.3
+    - http://stagehost
+prod:
+    allowedOrigins:
+      - http://127.0.0.4
+      - http://prodhost
