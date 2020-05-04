@@ -6,7 +6,7 @@ import (
 	yaml "gopkg.in/yaml.v2"
 )
 
-// CORS data
+// CORS defines the supported properties.
 type CORS struct {
 	AllowedOrigins []string `yaml:"allowedOrigins"`
 }
@@ -15,6 +15,8 @@ type CORS struct {
 type Config map[string]CORS
 
 // NewConfig decodes config file and returns Cors pointer.
+// The function will look for cors.yml file from the current directory. If
+// nothing can found it will try to look into the config directory.
 func NewConfig() (Config, error) {
 	file, err := os.Open("cors.yml")
 	if err != nil {

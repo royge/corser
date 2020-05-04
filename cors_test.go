@@ -23,9 +23,9 @@ stage:
     - http://127.0.0.3
     - http://stagehost
 prod:
-    allowedOrigins:
-      - http://127.0.0.4
-      - http://prodhost
+  allowedOrigins:
+    - http://127.0.0.4
+    - http://prodhost
 `
 
 func checkCors(t *testing.T, want, got []string) {

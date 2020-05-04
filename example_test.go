@@ -1,16 +1,5 @@
-# ezcors
+package ezcors_test
 
-Easy handling of CORS configuration file for Go http handlers.
-
-## How To Use
-
-```
-go get github.com/royge/ezcors
-```
-
-Example:
-
-```go
 import (
 	"fmt"
 
@@ -37,4 +26,3 @@ func ExampleNewConfig() {
 	// stage allowed origins: [http://127.0.0.3 http://stagehost]
 	// prod allowed origins: [http://127.0.0.4 http://prodhost]
 }
-```
