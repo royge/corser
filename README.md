@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/royge/ezcors.svg?branch=master)](https://travis-ci.org/royge/ezcors)
 [![Go Report Card](https://goreportcard.com/badge/github.com/royge/ezcors)](https://goreportcard.com/report/github.com/royge/ezcors)
 
-Easy handling of CORS configuration file for Go http handlers.
+Easy handling of CORS configuration file for rs.cors Options.
 
 ## How To Use
 

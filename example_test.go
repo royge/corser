@@ -30,7 +30,7 @@ func ExampleNewConfig() {
 	fmt.Println("prod allowed origins:", config["prod"].AllowedOrigins)
 
 	// Output:
-	// dev allowed origins: [http://127.0.0.1 http://devhost]
+	// dev allowed origins: [*]
 	// dev allowed methods: [GET POST PUT PATCH DELETE]
 	// dev allow credentials: false
 	// dev debug: true

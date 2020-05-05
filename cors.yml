@@ -1,7 +1,6 @@
 dev:
   allowedOrigins:
-    - http://127.0.0.1
-    - http://devhost
+    - '*'
   allowCredentials: false
   allowedMethods:
     - GET
