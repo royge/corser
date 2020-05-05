@@ -8,7 +8,10 @@ import (
 
 // CORS defines the supported properties.
 type CORS struct {
-	AllowedOrigins []string `yaml:"allowedOrigins"`
+	AllowedOrigins   []string `yaml:"allowedOrigins"`
+	AllowCredentials bool     `yaml:"allowCredentials"`
+	AllowedMethods   []string `yaml:"allowedMethods"`
+	Debug            bool     `yaml:"debug"`
 }
 
 // Config defines CORS configuration for every environment.

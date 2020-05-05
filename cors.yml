@@ -2,15 +2,35 @@ dev:
   allowedOrigins:
     - http://127.0.0.1
     - http://devhost
+  allowCredentials: false
+  allowedMethods:
+    - GET
+    - POST
+    - PUT
+    - PATCH
+    - DELETE
+  debug: true
 test:
   allowedOrigins:
     - http://127.0.0.2
     - http://testhost
+  allowCredentials: true
+  allowedMethods:
+    - POST
+  debug: true
 stage:
   allowedOrigins:
     - http://127.0.0.3
     - http://stagehost
+  allowCredentials: true
+  allowedMethods:
+    - POST
+  debug: false
 prod:
   allowedOrigins:
     - http://127.0.0.4
     - http://prodhost
+  allowCredentials: true
+  allowedMethods:
+    - POST
+  debug: false
