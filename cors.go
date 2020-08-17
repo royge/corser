@@ -22,14 +22,29 @@ type CORS struct {
 // Config defines CORS configuration for every environment.
 type Config map[string]CORS
 
+// Option defines CORS options.
+type Option struct {
+	// Path is the location of `cors.yml` file.
+	Path string
+}
+
 // NewConfig decodes config file and returns CORS Config.
 // The function will look for cors.yml file from the current directory. If
 // nothing can found it will try to look into the config directory for possible
 // cors.yml file.
-func NewConfig() (Config, error) {
-	file, err := os.Open("cors.yml")
+func NewConfig(opts ...Option) (Config, error) {
+	path := "cors.yml"
+
+	for _, opt := range opts {
+		if opt.Path != "" {
+			path = opt.Path
+		}
+	}
+
+	file, err := os.Open(path)
 	if err != nil {
-		file, err := os.Open("config/cors.yml")
+		path = "config/cors.yml"
+		file, err := os.Open(path)
 		if err != nil {
 			return nil, err
 		}

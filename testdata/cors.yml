@@ -12,7 +12,7 @@ dev:
 test:
   allowedOrigins:
     - http://127.0.0.2
-    - http://testhost.com
+    - http://testhostcustom.com
   allowCredentials: true
   allowedMethods:
     - POST
@@ -20,7 +20,7 @@ test:
 stage:
   allowedOrigins:
     - http://127.0.0.3
-    - http://stagehost.com
+    - http://stagehostcustom.com
   allowCredentials: true
   allowedMethods:
     - POST
@@ -28,7 +28,7 @@ stage:
 prod:
   allowedOrigins:
     - http://127.0.0.4
-    - http://prodhost.com
+    - http://prodhostcustom.com
   allowCredentials: true
   allowedMethods:
     - POST

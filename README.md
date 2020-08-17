@@ -67,6 +67,7 @@ import (
 // file.
 // You can check the content of cors.yml file for reference.
 func ExampleNewConfig() {
+	// Check for CORS config from cors.yml or config/cors.yml.
 	config, err := ezcors.NewConfig()
 	if err != nil {
 		panic("don't panic")
@@ -85,6 +86,20 @@ func ExampleNewConfig() {
 	fmt.Println("stage allowed origins:", config["stage"].AllowedOrigins)
 	fmt.Println("prod allowed origins:", config["prod"].AllowedOrigins)
 
+	// Check for CORS config from testdata/cors.yml.
+	config, err = ezcors.NewConfig(ezcors.Option{
+		Path: "testdata/cors.yml",
+	})
+	if err != nil {
+		panic("don't panic")
+	}
+
+	fmt.Println("-----------")
+	fmt.Println("Custom Path")
+	fmt.Println("test allowed origins:", config["test"].AllowedOrigins)
+	fmt.Println("stage allowed origins:", config["stage"].AllowedOrigins)
+	fmt.Println("prod allowed origins:", config["prod"].AllowedOrigins)
+
 	// Output:
 	// dev allowed origins: [http://127.0.0.1 http://devhost]
 	// dev allowed methods: [GET POST PUT PATCH DELETE]
@@ -96,5 +111,10 @@ func ExampleNewConfig() {
 	// test debug: true
 	// stage allowed origins: [http://127.0.0.3 http://stagehost]
 	// prod allowed origins: [http://127.0.0.4 http://prodhost]
+	// -----------
+	// Custom Path
+	// test allowed origins: [http://127.0.0.2 http://testhostcustom.com]
+	// stage allowed origins: [http://127.0.0.3 http://stagehostcustom.com]
+	// prod allowed origins: [http://127.0.0.4 http://prodhostcustom.com]
 }
 ```
