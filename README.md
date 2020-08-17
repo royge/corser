@@ -19,7 +19,7 @@ The `cors.yml` file.
 dev:
   allowedOrigins:
     - http://127.0.0.1
-    - http://devhost
+    - http://devhost.com
   allowCredentials: false
   allowedMethods:
     - GET
@@ -31,7 +31,7 @@ dev:
 test:
   allowedOrigins:
     - http://127.0.0.2
-    - http://testhost
+    - http://testhost.com
   allowCredentials: true
   allowedMethods:
     - POST
@@ -39,7 +39,7 @@ test:
 stage:
   allowedOrigins:
     - http://127.0.0.3
-    - http://stagehost
+    - http://stagehost.com
   allowCredentials: true
   allowedMethods:
     - POST
@@ -47,7 +47,7 @@ stage:
 prod:
   allowedOrigins:
     - http://127.0.0.4
-    - http://prodhost
+    - http://prodhost.com
   allowCredentials: true
   allowedMethods:
     - POST
@@ -101,16 +101,16 @@ func ExampleNewConfig() {
 	fmt.Println("prod allowed origins:", config["prod"].AllowedOrigins)
 
 	// Output:
-	// dev allowed origins: [http://127.0.0.1 http://devhost]
+	// dev allowed origins: [http://127.0.0.1 http://devhost.com]
 	// dev allowed methods: [GET POST PUT PATCH DELETE]
 	// dev allow credentials: false
 	// dev debug: true
-	// test allowed origins: [http://127.0.0.2 http://testhost]
+	// test allowed origins: [http://127.0.0.2 http://testhost.com]
 	// test allowed methods: [POST]
 	// test allow credentials: true
 	// test debug: true
-	// stage allowed origins: [http://127.0.0.3 http://stagehost]
-	// prod allowed origins: [http://127.0.0.4 http://prodhost]
+	// stage allowed origins: [http://127.0.0.3 http://stagehost.com]
+	// prod allowed origins: [http://127.0.0.4 http://prodhost.com]
 	// -----------
 	// Custom Path
 	// test allowed origins: [http://127.0.0.2 http://testhostcustom.com]
