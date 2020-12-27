@@ -1,10 +1,12 @@
 package ezcors_test
 
 import (
+	"net/http"
 	"reflect"
 	"testing"
 
 	"github.com/royge/ezcors"
+	"syreclabs.com/go/faker"
 )
 
 func checkCORSValue(t *testing.T, want, got interface{}) {
@@ -80,4 +82,60 @@ func TestNewConfig(t *testing.T) {
 		checkCORSValue(t, false, config["stage"].Debug)
 		checkCORSValue(t, false, config["prod"].Debug)
 	})
+}
+
+func TestAllowedOrigin(t *testing.T) {
+	emptyHeader := http.Header{}
+
+	withDiffOriginHeader := http.Header{}
+	withDiffOriginHeader.Add("Origin", faker.Internet().Url())
+
+	allowedOrigins := []string{
+		faker.Internet().Url(),
+		faker.Internet().Url(),
+		faker.Internet().Url(),
+	}
+
+	withOriginHeader := http.Header{}
+	withOriginHeader.Add("Origin", allowedOrigins[1])
+
+	tests := []struct {
+		name   string
+		header http.Header
+		input  []string
+		want   string
+	}{
+		{
+			"no origin",
+			emptyHeader,
+			allowedOrigins,
+			allowedOrigins[0],
+		},
+		{
+			"with different origin",
+			withDiffOriginHeader,
+			allowedOrigins,
+			allowedOrigins[0],
+		},
+		{
+			"with origin",
+			withOriginHeader,
+			allowedOrigins,
+			withOriginHeader.Get("Origin"),
+		},
+	}
+
+	for _, tc := range tests {
+		tc := tc
+
+		t.Run(tc.name, func(t *testing.T) {
+			t.Parallel()
+
+			got := ezcors.AllowedOrigin(tc.header, tc.input)
+
+			if got != tc.want {
+				t.Errorf("AllowedOrigin() want (%v), got (%v)", tc.want, got)
+			}
+		})
+	}
 }

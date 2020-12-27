@@ -2,6 +2,7 @@
 package ezcors
 
 import (
+	"net/http"
 	"os"
 
 	yaml "gopkg.in/yaml.v2"
@@ -58,4 +59,24 @@ func NewConfig(opts ...Option) (Config, error) {
 	}
 
 	return config, nil
+}
+
+// AllowedOrigin sets the allowed CORS origin for the request.
+// It checks for the `Origin` key from request headers otherwise it will use
+// the first item from `cors` slice of allowed origins.
+func AllowedOrigin(h http.Header, cors []string) string {
+	found := false
+	origin := h.Get("Origin")
+
+	for _, v := range cors {
+		if v == origin {
+			found = true
+		}
+	}
+
+	if !found {
+		return cors[0]
+	}
+
+	return origin
 }
